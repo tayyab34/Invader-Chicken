@@ -9,14 +9,15 @@ public class GameManager : MonoBehaviour
     private int timer = 0;
     public TextMeshProUGUI Lives;
     public TextMeshProUGUI Timer;
-    public GameObject DifficultyScreen;
     public int Spawn;
     public bool isGameActive;
     public GameObject pauseScreen;
+    public GameObject DifficultyScreen;
     private bool paused;
     void Start()
     {
         Spawn = GameObject.Find("SpawnManager").GetComponent<SpawnManager>().enemiestospawn;
+        Lives.text = "Lives: " + lives;
     }
     void Update()
     {
@@ -31,23 +32,24 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = true;
         Spawn *= difficulty;
-        DifficultyScreen.SetActive(false);
+        DifficultyScreen.gameObject.SetActive(false);
         StartCoroutine(Time());
     }
     IEnumerator Time()
     {
-        while (isGameActive)
-        {
+        //while (isGameActive)
+        //{
             yield return new WaitForSeconds(60);
             timer = timer + 1;
             Timer.text = "Time: " + timer;
-        }
+        //}
        
     }
     public  void AddLives(int livestoadd)
     {
         lives += livestoadd;
         Lives.text = "Lives: " + lives;
+
         if (lives == 0)
         {
             Destroy(gameObject);
@@ -65,5 +67,9 @@ public class GameManager : MonoBehaviour
             paused = false;
             pauseScreen.SetActive(false);
         }
+    }
+    private void GameOver()
+    {
+        isGameActive = false;
     }
 }

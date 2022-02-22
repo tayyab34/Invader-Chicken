@@ -24,7 +24,6 @@ public class DifficultyLevel : MonoBehaviour
     {
         Debug.Log(button.gameObject.name + " was clicked");
         gameManager.StartGame(difficulty);
-        gameManager.isGameActive = true;
     }
 
 

@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
                 Instantiate(EnemyPrefab, RandomSpawnPosition(), EnemyPrefab.transform.rotation);
             }
         //}
-           
+
     }
     void Update()
     {
@@ -36,7 +36,7 @@ public class SpawnManager : MonoBehaviour
                 }
             }
         //}
-        
+
     }
     Vector3 RandomSpawnPosition()
     {
